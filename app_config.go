@@ -120,7 +120,8 @@ type serverInfo struct {
 
 func init() {
 	//init config
-	initFileConfig()
+	// 初始化config 不在init 的时候，在agollo Start的时候
+	// initFileConfig()
 
 	//init common
 	initCommon()
@@ -130,10 +131,10 @@ func initCommon() {
 
 }
 
-func initFileConfig() {
-	// default use application.properties
-	initConfig(nil)
-}
+// func initFileConfig() {
+// 	// default use application.properties
+// 	initConfig(getAppConfig)
+// }
 
 func initConfig(loadAppConfig func() (*AppConfig, error)) {
 	var err error

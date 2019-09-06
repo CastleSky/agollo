@@ -21,6 +21,11 @@ func StartWithParams(appConfig *AppConfig, loggerInterface LoggerInterface, cach
 		initCache(cacheInterface)
 	}
 
+	//初始化配置信息
+	initConfig(func () {*AppConfig, error} {
+		return appConfig, nil
+	})
+
 	//init server ip list
 	go initServerIpList(appConfig)
 
