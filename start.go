@@ -22,7 +22,7 @@ func StartWithParams(appConfig *AppConfig, loggerInterface LoggerInterface, cach
 	}
 
 	//init server ip list
-	go initServerIpList(appConfig * AppConfig)
+	go initServerIpList(appConfig)
 
 	//first sync
 	err := notifySyncConfigServices()
