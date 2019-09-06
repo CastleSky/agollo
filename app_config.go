@@ -174,14 +174,14 @@ func getLoadAppConfig(loadAppConfig func() (*AppConfig, error)) (*AppConfig, err
 
 //set timer for update ip list
 //interval : 20m
-func initServerIpList() {
-	syncServerIpList(nil)
+func initServerIpList(appConfig *AppConfig) {
+	syncServerIpList(appConfig)
 
 	t2 := time.NewTimer(refresh_ip_list_interval)
 	for {
 		select {
 		case <-t2.C:
-			syncServerIpList(nil)
+			syncServerIpList(appConfig)
 			t2.Reset(refresh_ip_list_interval)
 		}
 	}

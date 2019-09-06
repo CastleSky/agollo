@@ -1,19 +1,19 @@
 package agollo
 
 //start apollo
-func Start() error {
-	return StartWithLogger(nil)
+func Start(appConfig *AppConfig) error {
+	return StartWithLogger(appConfig, nil)
 }
 
-func StartWithLogger(loggerInterface LoggerInterface) error {
-	return StartWithParams(loggerInterface,nil)
+func StartWithLogger(appConfig *AppConfig, loggerInterface LoggerInterface) error {
+	return StartWithParams(appConfig, loggerInterface, nil)
 }
 
-func StartWithCache(cacheInterface CacheInterface) error {
-	return StartWithParams(nil,cacheInterface)
+func StartWithCache(appConfig *AppConfig, cacheInterface CacheInterface) error {
+	return StartWithParams(appConfig, nil, cacheInterface)
 }
 
-func StartWithParams(loggerInterface LoggerInterface,cacheInterface CacheInterface) error {
+func StartWithParams(appConfig *AppConfig, loggerInterface LoggerInterface, cacheInterface CacheInterface) error {
 	if loggerInterface != nil {
 		initLogger(loggerInterface)
 	}
@@ -22,7 +22,7 @@ func StartWithParams(loggerInterface LoggerInterface,cacheInterface CacheInterfa
 	}
 
 	//init server ip list
-	go initServerIpList()
+	go initServerIpList(appConfig * AppConfig)
 
 	//first sync
 	err := notifySyncConfigServices()
