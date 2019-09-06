@@ -22,7 +22,7 @@ func StartWithParams(appConfig *AppConfig, loggerInterface LoggerInterface, cach
 	}
 
 	//初始化配置信息
-	initConfig(func () {*AppConfig, error} {
+	initConfig(func() (*AppConfig, error) {
 		return appConfig, nil
 	})
 
