@@ -25,6 +25,8 @@ func StartWithParams(appConfig *AppConfig, loggerInterface LoggerInterface, cach
 	initConfig(func() (*AppConfig, error) {
 		return appConfig, nil
 	})
+	//AllNotifications
+	initAllNotifications()
 
 	//init server ip list
 	go initServerIpList(appConfig)
