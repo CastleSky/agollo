@@ -2,7 +2,7 @@ package agollo
 
 import (
 	"encoding/json"
-	"github.com/zouyx/agollo/test"
+	"github.com/CastleSky/agollo/test"
 	"testing"
 	"time"
 )

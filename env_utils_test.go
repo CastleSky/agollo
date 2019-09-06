@@ -2,7 +2,7 @@ package agollo
 
 import (
 	"fmt"
-	"github.com/zouyx/agollo/test"
+	"github.com/CastleSky/agollo/test"
 	"testing"
 )
 

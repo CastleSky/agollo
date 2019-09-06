@@ -3,7 +3,7 @@ package agollo
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/zouyx/agollo/test"
+	"github.com/CastleSky/agollo/test"
 	"testing"
 	"time"
 )

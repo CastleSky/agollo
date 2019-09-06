@@ -1,9 +1,10 @@
 package agollo
 
 import (
-	"github.com/zouyx/agollo/test"
 	"testing"
 	"time"
+
+	"github.com/CastleSky/agollo/test"
 )
 
 func TestInit(t *testing.T) {
