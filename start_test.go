@@ -3,6 +3,8 @@ package agollo
 import (
 	"testing"
 	"time"
+
+	"github.com/CastleSky/agollo/test"
 	// "github.com/CastleSky/agollo/test"
 )
 
@@ -11,7 +13,7 @@ func TestStart(t *testing.T) {
 	go runMockNotifyServer(onlyNormalResponse)
 	defer closeMockConfigServer()
 
-	appconfig := &agollo.AppConfig{
+	appconfig := &AppConfig{
 		AppId:            "123",
 		Cluster:          "default",
 		NamespaceName:    "application",
@@ -23,7 +25,7 @@ func TestStart(t *testing.T) {
 	Start(appconfig)
 
 	value := getValue("key1")
-	// test.Equal(t, "value1", value)
+	test.Equal(t, "value1", value)
 }
 
 func TestErrorStart(t *testing.T) {
@@ -33,12 +35,21 @@ func TestErrorStart(t *testing.T) {
 
 	time.Sleep(1 * time.Second)
 
-	Start()
+	appconfig := &AppConfig{
+		AppId:            "test",
+		Cluster:          "dev",
+		NamespaceName:    "application",
+		NextTryConnTime:  3,
+		Ip:               "127.0.0.1:8888",
+		BackupConfigPath: "backConfig",
+	}
+
+	Start(appconfig)
 
 	value := getValue("key1")
-	// test.Equal(t, "value1", value)
+	test.Equal(t, "value1", value)
 
 	value2 := getValue("key2")
-	// test.Equal(t, "value2", value2)
+	test.Equal(t, "value2", value2)
 
 }

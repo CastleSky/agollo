@@ -3,7 +3,7 @@ package agollo
 import (
 	"strconv"
 	"sync"
-
+	"fmt"
 	"github.com/coocood/freecache"
 )
 
@@ -163,7 +163,7 @@ func GetCurrentApolloConfig() *ApolloConnConfig {
 func getConfigValue(key string) interface{} {
 	value, err := apolloConfigCache.Get([]byte(key))
 	if err != nil {
-		logger.Errorf("get config value fail!key:%s,err:%s", key, err)
+		logger.Error(fmt.Sprintf("get config value fail!key:%s,err:%s", key, err))
 		return empty
 	}
 

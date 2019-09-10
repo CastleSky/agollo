@@ -1,13 +1,33 @@
 package agollo
 
 import (
-	"github.com/cihub/seelog"
-)
+	"fmt"
+	)
+
+
+type splog struct {
+
+}
+func (this *splog) Debug(v ...interface{}){
+	fmt.Printf("[Debgu] %s \n", v)
+}
+
+func (this *splog) Info(v ...interface{}){
+	fmt.Printf("[Info] %s \n", v)
+}
+
+func (this *splog) Warn(v ...interface{}){
+	fmt.Printf("[Warn] %s \n", v)
+}
+
+func (this *splog) Error(v ...interface{}){
+	fmt.Printf("[Error] %s \n", v)
+}
 
 var logger LoggerInterface
 
 func init() {
-	initLogger(initSeeLog("seelog.xml"))
+	initLogger(initgLog())
 }
 
 func initLogger(ILogger LoggerInterface) {
@@ -15,34 +35,24 @@ func initLogger(ILogger LoggerInterface) {
 }
 
 type LoggerInterface interface {
-	Debugf(format string, params ...interface{})
+	// Debugf(format string, params ...interface{})
 
-	Infof(format string, params ...interface{})
+	// Infof(format string, params ...interface{})
 
-	Warnf(format string, params ...interface{}) error
+	// Warnf(format string, params ...interface{})
 
-	Errorf(format string, params ...interface{}) error
+	// Errorf(format string, params ...interface{})
 
 	Debug(v ...interface{})
 
 	Info(v ...interface{})
 
-	Warn(v ...interface{}) error
+	Warn(v ...interface{})
 
-	Error(v ...interface{}) error
+	Error(v ...interface{})
 }
 
-func initSeeLog(configPath string) LoggerInterface {
-	logger, err := seelog.LoggerFromConfigAsFile(configPath)
-
-	//if error is happen change to default config.
-	if err != nil {
-		logger, err = seelog.LoggerFromConfigAsBytes([]byte("<seelog />"))
-	}
-
-	logger.SetAdditionalStackDepth(1)
-	seelog.ReplaceLogger(logger)
-	defer seelog.Flush()
-
+func initgLog() LoggerInterface {
+	logger := &splog{}
 	return logger
 }

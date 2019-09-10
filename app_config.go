@@ -131,10 +131,10 @@ func initCommon() {
 
 }
 
-// func initFileConfig() {
-// 	// default use application.properties
-// 	initConfig(getAppConfig)
-// }
+func initFileConfig() {
+	// default use application.properties
+	initConfig(nil)
+}
 
 func initConfig(loadAppConfig func() (*AppConfig, error)) {
 	var err error

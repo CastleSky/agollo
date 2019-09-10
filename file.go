@@ -19,7 +19,7 @@ func writeConfigFile(config *ApolloConfig, configPath string) error {
 	}
 	file, e := os.Create(getConfigFile(configPath))
 	if e != nil {
-		logger.Errorf("writeConfigFile fail,error:", e)
+		logger.Error("writeConfigFile fail,error:", e)
 		return e
 	}
 	defer file.Close()
@@ -46,7 +46,7 @@ func loadConfigFile(configDir string) (*ApolloConfig, error) {
 	logger.Info("load config file from :", configFilePath)
 	file, e := os.Open(configFilePath)
 	if e != nil {
-		logger.Errorf("loadConfigFile fail,error:", e)
+		logger.Error("loadConfigFile fail,error:", e)
 		return nil, e
 	}
 	defer file.Close()
@@ -54,7 +54,7 @@ func loadConfigFile(configDir string) (*ApolloConfig, error) {
 	e = json.NewDecoder(file).Decode(config)
 
 	if e != nil {
-		logger.Errorf("loadConfigFile fail,error:", e)
+		logger.Error("loadConfigFile fail,error:", e)
 		return nil, e
 	}
 
