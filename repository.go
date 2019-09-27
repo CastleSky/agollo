@@ -1,17 +1,24 @@
+/*
+ * @Description:
+ * @Author: liv
+ * @Date: 2019-09-26 15:06:11
+ * @LastEditTime: 2019-09-26 15:37:07
+ * @LastEditors: liv
+ */
 package agollo
 
 import (
-	"strconv"
-	"sync"
 	"fmt"
 	"github.com/coocood/freecache"
+	"strconv"
+	"sync"
 )
 
 const (
 	empty = ""
 
 	//50m
-	apolloConfigCacheSize = 50 * 1024 * 1024
+	apolloConfigCacheSize = 10 * 1024 * 1024
 
 	//1 minute
 	configCacheExpireTime = 120
@@ -24,8 +31,8 @@ var (
 	apolloConfigCache CacheInterface = freecache.NewCache(apolloConfigCacheSize)
 )
 
-func initCache(cacheInterface CacheInterface)  {
-	apolloConfigCache=cacheInterface
+func initCache(cacheInterface CacheInterface) {
+	apolloConfigCache = cacheInterface
 }
 
 type CacheInterface interface {
