@@ -1,7 +1,7 @@
 package agollo
 
 import (
-	"github.com/CastleSky/agollo/test"
+	"github.com/livbarn/agollo/test"
 	"testing"
 	"time"
 )

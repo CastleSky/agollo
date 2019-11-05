@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/CastleSky/agollo/test"
-	// "github.com/CastleSky/agollo/test"
+	"github.com/livbarn/agollo/test"
+	// "github.com/livbarn/agollo/test"
 )
 
 func TestStart(t *testing.T) {
