@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"agollo/test"
+	"github.com/livbarn/agollo/test"
 )
 
 func TestInit(t *testing.T) {
