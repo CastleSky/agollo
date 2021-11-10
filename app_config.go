@@ -39,7 +39,13 @@ var (
 	next_try_connect_period int64 = 60
 )
 
+const (
+	Local  = iota //本地模式
+	Server        //服务器模式
+)
+
 type AppConfig struct {
+	Mode             int    `json:"mode"`
 	AppId            string `json:"appId"`
 	Cluster          string `json:"cluster"`
 	NamespaceName    string `json:"namespaceName"`
